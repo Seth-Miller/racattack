@@ -1,0 +1,28 @@
+Configs
+
+Upload and untar racattack_configs.tar in /racattack
+
+HTTP
+
+sed -i 's/^Listen .*/Listen 192.168.78.10:80/' /etc/httpd/conf/httpd.conf
+
+
+
+
+
+Named
+
+echo 'OPTIONS="-4"' >> /etc/sysconfig/named
+
+sed -i 's/^\s*dnssec-enable\s.*/\tdnssec-enable no;/' /etc/named.conf
+sed -i 's/^\s*dnssec-validation\s.*/\tdnssec-validation no;/' /etc/named.conf
+
+
+
+
+IPTables
+
+iptables -t nat -A PREROUTING -i eth1 -p tcp -m tcp --dport 80 -j DNAT --to-destination 192.168.56.10:3128
+iptables -t nat -A PREROUTING -i eth1 -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 3128
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
