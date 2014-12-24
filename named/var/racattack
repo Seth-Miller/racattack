@@ -1,0 +1,14 @@
+$TTL 10800	; 3 hours
+@			IN SOA	dns.racattack. hostmaster.racattack. (
+				137        ; serial
+				86400      ; refresh (1 day)
+				3600       ; retry (1 hour)
+				604800     ; expire (1 week)
+				10800      ; minimum (3 hours)
+				)
+				NS dns.racattack.
+dns				A	192.168.78.25
+collabn1			A	192.168.78.51
+collabn2			A	192.168.78.52
+collabn.racattack.		NS gns-vip.collabn.racattack.
+gns-vip.collabn.racattack.	A	192.168.78.20

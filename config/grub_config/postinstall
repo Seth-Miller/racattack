@@ -1,0 +1,43 @@
+#!/bin/bash
+#
+# postinstall           Finishes up a kickstart installation
+#
+# chkconfig: 2345 99 99
+# description:
+
+
+# source function library
+. /etc/rc.d/init.d/functions
+
+start()
+{
+# Exit if POSTINSTALL is NO
+if grep -q "^POSTINSTALL=NO" /etc/sysconfig/postinstall.cfg; then
+        exit 0
+fi
+
+# Exit if grub.conf was not placed in /root by kickstart
+if [ ! -f "/root/grub.conf" ]; then
+        echo "/root/grub.conf is missing. Script exiting"
+        exit 1
+fi
+
+# Make sure kernel packages are in place to satisfy the grub configuration
+rpm -q kernel-uek-2.6.39-200.24.1.el6uek.x86_64 kernel-uek-devel-2.6.39-200.24.1.el6uek.x86_64
+if [ $? -ne 0 ]; then
+        echo "Version 2.6.39-200.24.1.el6uek.x86_64 not present for the kernel and devel packages. Script exiting."
+        exit 1
+fi
+
+# Remove this procedure from /etc/rc.local when complete
+mv /boot/grub/grub.conf /boot/grub/grub.conf.bak && \
+mv /root/grub.conf /boot/grub/grub.conf && \
+echo "POSTINSTALL=NO" > /etc/sysconfig/postinstall.cfg && \
+chkconfig postinstall off && \
+reboot
+}
+
+
+if [ "$1" = "start" ]; then
+	start
+fi
