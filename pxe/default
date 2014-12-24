@@ -3,10 +3,26 @@ default menu.c32
 
 menu title Welcome to RAC Attack!
 label 1
-  menu label ^ 1) OEL6.4
+  menu label ^ 1) OEL6.4 Automatic OS Install for collabn1
   kernel oel6.4/vmlinuz
-  append initrd=oel6.4/initrd.img  ks=http://192.168.78.10/config/kickstart/ks.cfg ksdevice=eth0
+  append initrd=oel6.4/initrd.img  ks=http://192.168.78.25/config/kickstart/collabn1/ks_auto.cfg ksdevice=eth0
 label 2
-  menu label ^ 2) OEL6.4 Interactive
+  menu label ^ 2) OEL6.4 Interactive OS Install for collabn1
   kernel oel6.4/vmlinuz
-  append initrd=oel6.4/initrd.img  ks=http://192.168.78.10/config/kickstart/ks_interactive.cfg ksdevice=eth0
+  append initrd=oel6.4/initrd.img  ks=http://192.168.78.25/config/kickstart/collabn1/ks_interactive.cfg ksdevice=eth0
+label 3
+  menu label ^ 3) OEL6.4 Automatic OS Install for collabn2
+  kernel oel6.4/vmlinuz
+  append initrd=oel6.4/initrd.img  ks=http://192.168.78.25/config/kickstart/collabn2/ks_auto.cfg ksdevice=eth0
+label 4
+  menu label ^ 4) OEL6.4 Interactive OS Install for collabn2
+  kernel oel6.4/vmlinuz
+  append initrd=oel6.4/initrd.img  ks=http://192.168.78.25/config/kickstart/collabn2/ks_interactive.cfg ksdevice=eth0
+label 5
+  menu label ^ 5) OEL6.4 Automatic OS Install for Enterprise Manager
+  kernel oel6.4/vmlinuz
+  append initrd=oel6.4/initrd.img  ks=http://192.168.78.25/config/kickstart/ks_em12c.cfg ksdevice=eth0
+label 6
+  menu label ^ 6) OEL6.4 Generic Automatic OS Install
+  kernel oel6.4/vmlinuz
+  append initrd=oel6.4/initrd.img  ks=http://192.168.78.25/config/kickstart/ks_standard.cfg ksdevice=eth0
