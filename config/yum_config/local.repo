@@ -1,13 +1,13 @@
 [cdrom]
 name=Oracle Linux 6.3 x86_64
-baseurl=http://192.168.78.10/repos/ol6_cdrom
+baseurl=http://192.168.78.25/repos/ol6_cdrom
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY
 gpgcheck=0
 enabled=1
 
 [local]
 name=Oracle Linux 6.3 x86_64
-baseurl=http://192.168.78.10/repos/ol6_repo
+baseurl=http://192.168.78.25/repos/ol6_repo
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY
 gpgcheck=0
 enabled=1
