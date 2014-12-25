@@ -1,4 +1,5 @@
 
+FILEDIR=/racattack/git/config/setup
 SED=sed
 FILE=/etc/sysconfig/network-scripts/ifcfg-eth0
 ETH0=/etc/sysconfig/network-scripts/ifcfg-eth0
@@ -64,3 +65,6 @@ mkchg 'SELINUX=disabled' /etc/selinux/config
 # Disable the firewall
 service iptables stop
 chkconfig iptables off
+
+# Update resolv.conf
+cp $FILEDIR/resolv.conf /etc/
