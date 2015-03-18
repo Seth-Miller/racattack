@@ -1,6 +1,6 @@
 touch /etc/scsi_id.config
 sed -i -e '/options=/d' /etc/scsi_id.config
-echo '$aoptions=-g' >> /etc/scsi_id.config
+echo 'options=-g' >> /etc/scsi_id.config
 
 i=1
 cmd="/sbin/scsi_id -g -u -d"
